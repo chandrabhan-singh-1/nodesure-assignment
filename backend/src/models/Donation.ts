@@ -6,8 +6,7 @@ export interface IDonation extends Omit<Donation, "_id">, Document {}
 const donationSchema = new Schema<IDonation>(
   {
     animalId: {
-      type: Schema.Types.ObjectId,
-      ref: "Animal",
+      type: String,
       required: true,
     },
     donorName: {
