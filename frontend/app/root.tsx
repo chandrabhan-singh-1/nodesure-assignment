@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <script src="https://checkout.razorpay.com/v1/checkout.js" />
       </head>
-      <body>
+      <body className="text-black dark:text-white">
         {children}
         <ScrollRestoration />
         <Scripts />

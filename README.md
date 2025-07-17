@@ -54,7 +54,7 @@ npm run install:all
 
 ### 2. Environment Setup
 
-Create a `.env` file in the `backend` directory:
+`.env` file in the `backend` directory:
 
 ```env
 PORT=5000
@@ -63,6 +63,16 @@ RAZORPAY_KEY_ID=your_razorpay_key_id_here
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret_here
 FRONTEND_URL=http://localhost:3000
 NODE_ENV=development
+```
+
+ `.env` file in the `frontend` directory:
+
+```env
+VITE_API_URL=http://localhost:5000
+VITE_API_BASE_PATH=/api
+VITE_APP_NAME=Animal Welfare Donation Portal
+VITE_RAZORPAY_KEY_ID=rzp_test_your_razorpay_key_id_here
+VITE_ENABLE_DEBUG=true
 ```
 
 ### 3. Razorpay Setup

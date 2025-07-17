@@ -145,9 +145,9 @@ export default function AnimalDetail() {
 
                 {selectedAnimal.targetAmount && (
                   <>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Target:</span>
-                      <span className="font-medium">
+                    <div className="flex justify-between text-lg">
+                      <span className="text-gray-800">Target:</span>
+                      <span className="font-medium text-gray-800">
                         {formatCurrency(selectedAnimal.targetAmount)}
                       </span>
                     </div>
