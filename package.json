@@ -1,0 +1,29 @@
+{
+  "name": "animal-welfare-donation-portal",
+  "version": "1.0.0",
+  "description": "Animal Welfare Donation Portal - MERN Stack Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend:dev": "cd frontend && npm run dev",
+    "backend:install": "cd backend && npm install",
+    "frontend:install": "cd frontend && npm install",
+    "install:all": "npm install && npm run backend:install && npm run frontend:install",
+    "build": "npm run backend:build && npm run frontend:build",
+    "backend:build": "cd backend && npm run build",
+    "frontend:build": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "mern",
+    "typescript",
+    "donation",
+    "animal-welfare",
+    "razorpay"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
