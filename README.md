@@ -159,7 +159,7 @@ animal-welfare-donation-portal/
 
 To test payments:
 1. Use Razorpay test mode
-2. Test card numbers: 4111111111111111
+2. Test card numbers: 4386 2894 0766 0153
 3. Use any future date for expiry
 4. Use any 3-digit CVV
 
@@ -177,15 +177,3 @@ To test payments:
 3. Commit your changes
 4. Push to the branch
 5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-If you have any questions or need help setting up the project, please create an issue or contact the development team.
-
----
-
-**Made with ❤️ for animal welfare** 

@@ -72,7 +72,6 @@ export function DonationModal({ animal, isOpen, onClose }: DonationModalProps) {
         );
       }
 
-      // Initialize Razorpay with key from backend
       const options = {
         key: orderData.keyId, // Use keyId from backend response
         amount: orderData.amount,
@@ -190,11 +189,10 @@ export function DonationModal({ animal, isOpen, onClose }: DonationModalProps) {
                       key={amount}
                       type="button"
                       onClick={() => handleQuickAmount(amount)}
-                      className={`px-3 py-2 text-sm rounded-md border transition-colors ${
-                        formData.amount === amount
-                          ? "bg-blue-600 text-white border-blue-600"
-                          : "bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300"
-                      }`}
+                      className={`px-3 py-2 text-sm rounded-md border transition-colors ${formData.amount === amount
+                        ? "bg-blue-600 text-white border-blue-600"
+                        : "bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300"
+                        }`}
                     >
                       {formatCurrency(amount)}
                     </button>
@@ -241,10 +239,6 @@ export function DonationModal({ animal, isOpen, onClose }: DonationModalProps) {
                   <span>Any 6 digits</span>
                 </div>
               </div>
-              <p className="text-xs text-yellow-600 mt-2 italic">
-                Use these test cards for demo purposes. No real money will be
-                charged.
-              </p>
             </div>
 
             <div className="flex gap-3 pt-4">

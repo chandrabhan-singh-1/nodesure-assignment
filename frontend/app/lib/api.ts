@@ -37,7 +37,6 @@ class ApiService {
       throw new Error(response.message || "Failed to fetch animals");
     }
 
-    // Validate and parse each animal object
     return response.data.map((animal: any) => {
       return AnimalSchema.parse(animal);
     });

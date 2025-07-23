@@ -12,7 +12,6 @@ export const createDonationOrder = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  // Check if environment variables are set
   if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
     console.error("Missing Razorpay environment variables");
     res.status(500).json({
@@ -31,7 +30,6 @@ export const createDonationOrder = async (
     const validatedData = CreateDonationSchema.parse(req.body);
     const { animalId, donorName, donorEmail, amount } = validatedData;
 
-    // Check if animal exists
     const animal = await AnimalModel.findById(animalId);
     if (!animal) {
       res.status(404).json({
@@ -41,7 +39,6 @@ export const createDonationOrder = async (
       return;
     }
 
-    // Create Razorpay order
     const orderOptions = {
       amount: amount * 100, // Razorpay expects amount in paise
       currency: "INR",
@@ -50,7 +47,6 @@ export const createDonationOrder = async (
 
     const order = await razorpay.orders.create(orderOptions);
 
-    // Save donation record
     const donation = new DonationModel({
       animalId,
       donorName,
@@ -69,7 +65,7 @@ export const createDonationOrder = async (
         amount: order.amount,
         currency: order.currency,
         donationId: donation._id,
-        keyId: process.env.RAZORPAY_KEY_ID, // Send key ID to frontend
+        keyId: process.env.RAZORPAY_KEY_ID, // Sending key ID to frontend
       },
     });
   } catch (error) {
@@ -86,7 +82,6 @@ export const verifyPayment = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  // Check if environment variables are set
   if (!process.env.RAZORPAY_KEY_SECRET) {
     console.error("Missing Razorpay secret key");
     res.status(500).json({
@@ -101,7 +96,6 @@ export const verifyPayment = async (
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
       validatedData;
 
-    // Verify payment signature
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
@@ -116,7 +110,6 @@ export const verifyPayment = async (
       return;
     }
 
-    // Update donation record
     const donation = await DonationModel.findOneAndUpdate(
       { razorpayOrderId: razorpay_order_id },
       {
@@ -135,7 +128,6 @@ export const verifyPayment = async (
       return;
     }
 
-    // Update animal's raised amount
     await AnimalModel.findByIdAndUpdate(donation.animalId, {
       $inc: { raisedAmount: donation.amount },
     });
